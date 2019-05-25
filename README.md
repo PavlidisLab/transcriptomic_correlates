@@ -10,11 +10,12 @@ This notebook contains code for making some basic plots of our processed data. *
 
 [binder]: https://mybinder.org/v2/gh/PavlidisLab/transcriptomic_correlates/master?filepath=Plotting%20Tools.ipynb
 
-The notebook has 3 main sections: 
- 
+The notebook has 4 main sections: 
+
+- Make scatter plots of a single gene versus all ephys and morphology properties, color coded by cell class and with a linear fit to each class and to all cells. 
 - Select data based on gene, property, or slope/significance in one or more models. You can ask questions like "What properties is my favorite gene significantly correlated with in a certain model?" or "What are gene/property relationships that are only identified by the class-conditional model?"
-- Make scatter plots of a gene and an ephys or morphology property, color coded by cell class and with a linear fit to each class and to all cells.
-- Run the full set of models for a given gene/property pair. We've saved some of the most relevant bits of the models (slopes, p-values, AIC, etc.) in Table S5, but if you need more details this is how you can get them.
+- Make scatter plots of one or more gene-property pairs. These are the same plots as in the first section, but we show a few different examples of how you can either specify exactly which genes and properties to plot, or or pick gene-property pairs by filtering as in the section above.  
+- Run the full set of models for a given gene/property pair. We've saved some of the most relevant bits of the models (slopes, p-values, AIC, etc.) in Online Tables 1 and 2, but if you need more details this is how you can get them.
 
 ## Analysis Code 
  
@@ -24,21 +25,21 @@ The code used for the Patch-seq analysis (written in R) will be added later.
 
 ## Data  
 
-This folder contains supplementary tables S4-S7, which are required for the plotting tool notebook.
+This folder contains online tables 1-4, which are required for the plotting tools notebook.
 
-**S4**: All 51,091 gene/property pairs (9,780 unique genes) with a significant result (FDR < 0.1) in the class-conditional and/or interaction models.
+**Online Table 1**: All 51,091 gene/property pairs (9,780 unique genes) with a significant result (FDR < 0.1) in the class-conditional and/or interaction models.
 
-**S5**: All gene/property pairs regardless of significance (286,032 pairs and 12,225 unique genes).
+**Online Table 2**: All gene/property pairs regardless of significance (286,032 pairs and 12,225 unique genes).
 
-**S6**: Mean values of ephys properties and gene expression values (rows) for each cell type (columns) in the combined dataset. Ephys measures include both un-transformed values (for all properties) as well as log10-transformed for a subset (see manuscript). Contains 48 cell types.
+**Online Table 3**: Mean values of ephys properties and gene expression values (rows) for each cell type (columns) in the combined dataset. Ephys measures include both un-transformed values (for all properties) as well as log10-transformed for a subset (see manuscript). Contains 48 cell types.
 
-**S7**: Same as S6, but for morphology properties. Contains 43 cell types.
+**Online Table 4**: Same as 3, but for morphology properties. Contains 43 cell types.
 
-### Description of columns in Tables S4 and S5  
+### Description of columns in Online Tables 1 and 2
 
 - property: Ephys or morphology property  
 - gene\_entrez\_id: Entrez Gene ID  
-- gene_symbol : Official gene symbol  
+- gene_symbol : Gene symbol  
 - beta_gene: beta (slope) from the class-independent model  
 - beta_gene|class: beta from the class-conditional model  
 - slope_exc: excitatory cell type-specific slope from the interaction model  
@@ -51,7 +52,11 @@ This folder contains supplementary tables S4-S7, which are required for the plot
 - model3_aic: AIC, property ~ gene + cell class  
 - model4_aic: AIC, property ~ gene + cell class + gene * cell class interaction  
 - FDR\_gene: FDR-corrected p-value, class-independent (corresponds to pval_gene)  
-- FDR\_gene|class\_anova: FDR-corrected p-value, class-conditional
+- FDR\_gene|class\_anova: FDR-corrected p-value, class-conditional  
 - FDR\_int\_anova: FDR-corrected p-value, class-independent  
-- n\_significant\_0.1\_g|c: Total number of properties for which this gene shows FDR < 0.1 in the class-conditional model  (S4 only)  
-- n\_significant\_0.1\_int: Total number of properties for which this gene shows FDR < 0.1 in the interaction model (S4 only) 
+- beta\_gene\_inh_only: beta from a version of the class-independent model in which we included only inhibitory cell types. We tested this as an alternative method to the class-conditional model for avoiding class-driven effects. We didn't end up including this in the paper, but our overall impression was that that we get somewhat similar results using both approaches. We suspect that this is largely a result of the much larger number of inhibitory compared to excitatory cell types in the AIBS dataset.  
+- pval\_gene\_inh_only: uncorrected p-value for the inhibitory type-only model  
+- inh\_only\_aic: AIC, property ~gene with inhibitory cell types only  
+- FDR\_gene\_inh_only: FDR-corrected p-value, inhibitory cell types only  
+- n\_significant\_0.1\_g|c: Total number of properties for which this gene shows FDR < 0.1 in the class-conditional model  (Online Table 1 only)  
+- n\_significant\_0.1\_int: Total number of properties for which this gene shows FDR < 0.1 in the interaction model (Online Table 1 only)  

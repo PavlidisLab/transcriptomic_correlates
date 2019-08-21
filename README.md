@@ -1,8 +1,8 @@
 # transcriptomic_correlates
 
-This is where you'll find the code (and some of the output data) from our manuscript ["Transcriptomic correlates of electrophysiological and morphological diversity within and across neuron types"][manuscript]
+This is where you'll find the code (and some of the output data) from our manuscript ["Transcriptomic correlates of electrophysiological and morphological diversity within and across excitatory and inhibitory neuron classes"][manuscript]
 
-[manuscript]: https://www.biorxiv.org/content/early/2019/01/18/524561
+[manuscript]: https://journals.plos.org/ploscompbiol/article/related?id=10.1371/journal.pcbi.1007113
 
 ## Plotting Tools 
  

@@ -2,7 +2,7 @@
 
 This is where you'll find the code (and some of the output data) from our manuscript ["Transcriptomic correlates of electrophysiological and morphological diversity within and across excitatory and inhibitory neuron classes"][manuscript]
 
-[manuscript]: https://journals.plos.org/ploscompbiol/article/related?id=10.1371/journal.pcbi.1007113
+[manuscript]: https://doi.org/10.1371/journal.pcbi.1007113
 
 ## Plotting Tools 
  
